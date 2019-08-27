@@ -1,0 +1,76 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <div id="app">
+        <!--{{ message }}
+        <br>
+        <input type="text" v-model='message'>
+        <br>
+        <input type="text" v-model='message'>-->
+        <div class="container">
+            <h3>Ano nascimento:</h3>
+            <input type="text" id="ano" v-model='ano' > 
+        </div>
+        <div class="container">
+            <h3>Idade:</h3>
+            <input type="text" id="idade" v-model='idade'> 
+        </div>
+        <div v-if='idade <=20' class="container msg" style="background-color:red">
+            <h2>Você tem {{idade}} anos</h2>
+        </div>
+        <div v-if='idade > 20' class="container msg" style="background-color:greenyellow">
+            <h2>Você tem {{idade}} anos</h2>
+        </div>
+        <div class="container">
+            <input type="button" @click="btnClick()" value="Calcular idade" >
+            <input type='button' @click='idadeParaAno()' value='Calcular ano'>
+        </div>
+        <div class="container">
+            <ul>
+                <li v-for='item in itens'>
+                    {{item.message}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Olá Vue!',
+                idade: 0,
+                ano: 0,
+                itens: [
+                    {message: 'Teste 1'},
+                    {message: 'Teste 2'},
+                    {message: 'Teste 3'}
+                ]
+            },
+            methods:{
+                idadeParaAno:function(){
+                    this.ano = 2019 - this.idade;
+                },
+                btnClick:function(){
+                    this.idade = 2019 - this.ano;
+                }
+            },
+            watch:{
+                idade:function(val){
+                    this.idadeParaAno()
+                },
+                ano:function(val){
+                    this.btnClick()
+                },
+            }
+        })
+    </script>
+</body>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>exemplo1</title>
+  <meta charset="UTF -8">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h3>Ano nascimento:</h3>
+  <input type="text" id="ano" > 
+</div>
+<div class="container">
+    <h3>Idade:</h3>
+    <input type="text" id="idade"> 
+</div>
+<div class="container msg">
+  <h2>oi</h2>
+</div>
+<div class="container">
+    <input type="button" onclick="btnClick()" value="Calcular idade" >
+    <input type='button' onclick='idadeParaAno()' value='Calcular ano'>
+</div>
+<script>
+    $('.msg').hide();
+    function btnClick()
+    {
+      idade = 2019 - $('#ano').val();
+      $('#idade').val(idade);
+      if(idade <= 20){
+        $('.container').css('background-color', 'red');
+      }else{
+        $('.container').css('background-color', 'green');
+      }
+      $('.msg').show();
+      $('.container > h2').html('Você tem '+idade+' ano(s)');
+    }
+    function idadeParaAno(){
+      idade = $('#idade').val()
+      ano = 2019 - idade;
+      $('#ano').val();
+      if(idade <= 20){
+        $('.container').css('background-color', 'red');
+      }else{
+        $('.container').css('background-color', 'green');
+      }
+      $('.msg').show();
+      $('.container > h2').html('Você nasceu no ano de '+ano);
+    }
+</script>
+</body>
+</html>
